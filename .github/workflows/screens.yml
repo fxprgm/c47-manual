@@ -26,6 +26,9 @@ jobs:
       - run: pip install -r requirements.txt
 
       - name: The engine's build dependencies (c47-cg's tools/setup_env.py, without its CG50 toolchain)
+        env:
+          # xlsxio asks for CMake < 3.5, which the runner's CMake 4 refuses unless told this
+          CMAKE_POLICY_VERSION_MINIMUM: "3.5"
         run: |
           git clone -q --depth 1 https://github.com/fxprgm/c47-cg /tmp/c47-cg-setup
           sudo -E python3 -c "import sys; sys.path.insert(0, '/tmp/c47-cg-setup/tools'); import setup_env as s; s.apt(); s.xlsxio()"
