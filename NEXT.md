@@ -5,16 +5,26 @@ is done or found.
 
 ## Waiting on the user
 
-- **A `main` branch.** The repository was empty, so the first branch pushed
-  (`claude/hopeful-lovelace-qhl315`) is its default. The workflows publish from the default
-  branch, whatever its name: create `main` from it (or rename it) and make `main` the default.
-- **Review the sample chapters** (`guide/01`, `guide/02`; the PDF from the `guide` workflow's
-  artifact or `python3 tools/build.py pdf`): the look (keycaps, steps with screens, chapter-page
-  numbers), the tone, the depth. Decide before more chapters are written.
-- **fxprgm/c47-cg**: merge its branch `claude/hopeful-lovelace-qhl315` (the PC build's
-  `lcd FILE` command, which the engine uses). `C47_VERSION` pins c47-cg by its newest commit there (d043587: the `lcd` command, and xlsxio built with CMake 4) until then.
-- **Tell the C47 team** (forum, or the documentation people on GitLab) about the guide and the
-  bundles before the guide grows, so it reads as a companion to their Owner's Manual.
+- **Review the sample chapters** (`guide/01`, `guide/02`): the user is reading them now. Nothing
+  below is started until they have (decided 2026-11-26). Questions for them: the look (steps
+  on the left with the screen on the right, keycaps in the R47's colours, chapter-page numbers),
+  the depth of chapters 1-2, A4 only or a US Letter edition too.
+- **Tell the C47 team, and answer the Reddit thread** that asked for one complete manual
+  (r/SwissMicrosC47R47 or similar): the bundle PDF answers it today. Draft the posts for the
+  user to send (under their name), once they have reviewed the chapters.
+- **Compare a few screens with a real R47** (start, STK, DISP page 2, CAT), if the user or
+  someone with an R47 can: they should match except the date and the battery icon, which come
+  from DMCP on the calculator and from c47-cg's stand-in here.
+
+## Next, in this order, after the review
+
+1. **Generated appendices, no writing needed:** a *menu atlas*, every page of every menu as a
+   real screen (RefDB47 `softmenus`/`menus` tables + the engine; about 190 menus), and a
+   *function index*, every command with its menu, key and description (`items` table).
+2. **Self-checking examples:** a script command that checks X (for example `expect X 238`),
+   so a worked example that stops being true fails the `screens` workflow.
+3. **Chapter 3: numbers and how they are shown** (integers and reals, fractions, FIX / SCI /
+   ENG / ALL, digit grouping). Then the chapters in the order under "To do".
 
 ## To do
 
@@ -24,10 +34,7 @@ is done or found.
   plotting, text (alpha), programming (several chapters, an examples library), customising
   (user mode, assignments), files and USB, then appendices generated from RefDB47: every
   function, every menu (with its screen), flags, error messages, the keyboard of each model.
-- **Generated appendices**: a script reading `build/engine/c47-cg/upstream/docs/refdb47/data/*.tsv`
-  (items, menus, flags, errors) into Markdown, and a script making a screen of every menu page.
-- **Examples checked on the calculator**: a script command that compares X with an expected
-  value, so a worked example that stops being true fails the `screens` workflow.
+- **More generated appendices**: flags and error messages, from RefDB47 `flags` and `errors`.
 - **C47 edition** (DM42 keyboard): the same text with the DM42 key legends; needs key
   references by function rather than by R47 legend.
 - **Website**: the `site` format on GitHub Pages.
@@ -36,6 +43,9 @@ is done or found.
 
 ## Done (newest first)
 
+- 2026-11-26: the repository's branch renamed to `main` (the default); fxprgm/c47-cg's branch
+  with the `lcd` command and the CMake 4 fix merged (c47-cg#1), so `C47_VERSION`'s pin d043587
+  is on c47-cg's main.
 - 2026-11-26: repository set up. Bundles of the C47 team's Owner's Manual and application
   notes (bundle/, weekly workflow, release `bundle`); the screenshot engine (c47-cg's PC build
   without its CG50 layout patch, `lcd` command) and shooter; the build to PDF (whole and per
