@@ -1,0 +1,89 @@
+# Collects the C47 team's own documentation (the newest Owner's Manual and every application note)
+# into whole PDFs with bookmarks (bundle/bundle.py) and publishes them on the release "bundle", whose
+# download links never change:
+#   https://github.com/fxprgm/c47-manual/releases/download/bundle/C47-R47-Manual-and-Notes.pdf
+# Weekly, and when run by hand (Actions, bundle, Run workflow); it uploads only when an input changed
+# (the manual's package version, a note, or the bundle's own code), unless "force" is ticked.
+name: bundle
+
+on:
+  schedule:
+    - cron: "41 4 * * 1"
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Publish even if nothing changed"
+        type: boolean
+        default: false
+  push:
+    branches: [main]
+    paths: ["bundle/**", "requirements.txt", ".github/workflows/bundle.yml"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: bundle
+  cancel-in-progress: false
+
+jobs:
+  bundle:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Build the bundles
+        run: python bundle/bundle.py --out dist
+
+      - name: Changed since the last publication?
+        id: check
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          fp="$(cat dist/fingerprint.txt)"
+          old="$(gh release view bundle --json body -q .body 2>/dev/null | sed -n 's/.*<!-- fingerprint: \(.*\) -->.*/\1/p')"
+          echo "now: $fp"
+          echo "was: $old"
+          if [ "$fp" = "$old" ] && [ "${{ inputs.force }}" != "true" ]; then
+            echo "publish=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "publish=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Publish
+        if: steps.check.outputs.publish == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          base="https://github.com/${{ github.repository }}/releases/download/bundle"
+          {
+            echo "The C47/R47 documentation, gathered into whole PDFs with bookmarks. Rebuilt weekly"
+            echo "from the C47 team's own publications; these links always give the newest copy:"
+            echo
+            echo "- **Everything in one file:** [C47-R47-Manual-and-Notes.pdf]($base/C47-R47-Manual-and-Notes.pdf)"
+            echo "- **Owner's Manual:** [C47-R47-Owners-Manual.pdf]($base/C47-R47-Owners-Manual.pdf)"
+            echo "- **All application notes:** [C47-R47-Application-Notes.pdf]($base/C47-R47-Application-Notes.pdf)"
+            echo
+            echo "All under the GNU Free Documentation License 1.3 or later. What went in:"
+            echo
+            echo '```'
+            cat dist/SOURCES.txt
+            echo '```'
+            echo
+            echo "<!-- fingerprint: $(cat dist/fingerprint.txt) -->"
+          } > notes.md
+          files="dist/C47-R47-Manual-and-Notes.pdf dist/C47-R47-Owners-Manual.pdf dist/C47-R47-Application-Notes.pdf dist/SOURCES.txt"
+          if gh release view bundle >/dev/null 2>&1; then
+            gh release upload bundle $files --clobber
+            gh release edit bundle --notes-file notes.md --title "C47/R47 documentation in one file ($(date -u +%F))"
+          else
+            gh release create bundle $files --target "${{ github.sha }}" --latest=false \
+              --title "C47/R47 documentation in one file ($(date -u +%F))" --notes-file notes.md
+          fi

@@ -1,0 +1,7 @@
+# 2: 19 % of 200, and 200 plus it
+key 2 0 0 ENTER 1 9
+shot pct-19
+key f RCL
+shot pct-38
+key +
+shot pct-238

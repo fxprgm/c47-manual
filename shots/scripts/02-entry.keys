@@ -1,0 +1,7 @@
+# 2: entering numbers: EEX, CHS
+key 6 . 0 2 EEX 2 3
+shot entry-eex
+key ENTER
+shot entry-eex-enter
+key 1 . 5 CHS
+shot entry-chs

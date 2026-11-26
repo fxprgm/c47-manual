@@ -1,0 +1,50 @@
+# Remakes every screenshot with the C47 in C47_VERSION (shots/engine.py, shots/shoot.py) and
+# fails if any screen differs from the committed one: the list of changed screens, in the job
+# summary, is the list of pages to look at again. The new screens are in the artifact
+# "screens"; to take them, run shots/shoot.py locally (or copy them into shots/png) and commit.
+# Runs when the C47 version, a screenshot script or the engine changes, and by hand.
+name: screens
+
+on:
+  push:
+    paths: ["C47_VERSION", "shots/**", ".github/workflows/screens.yml"]
+  pull_request:
+    paths: ["C47_VERSION", "shots/**"]
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: The engine's build dependencies (c47-cg's tools/setup_env.py, without its CG50 toolchain)
+        run: |
+          git clone -q --depth 1 https://github.com/fxprgm/c47-cg /tmp/c47-cg-setup
+          sudo -E python3 -c "import sys; sys.path.insert(0, '/tmp/c47-cg-setup/tools'); import setup_env as s; s.apt(); s.xlsxio()"
+
+      - name: Build the engine
+        run: python3 shots/engine.py
+
+      - name: Remake the screens
+        id: shoot
+        run: |
+          set +e
+          python3 shots/shoot.py --check | tee check.txt
+          status=${PIPESTATUS[0]}
+          { echo '### Screens'; echo '```'; cat check.txt; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+          python3 shots/shoot.py > /dev/null
+          exit $status
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: screens
+          path: shots/png

@@ -1,0 +1,5 @@
+# 2: LASTx
+key 2 ENTER 3 +
+shot lastx-5
+key f x⇄y
+shot lastx-3

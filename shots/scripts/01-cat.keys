@@ -1,0 +1,5 @@
+# 1: f +: CAT, the catalogs; F1: FCNS, every function
+key f +
+shot cat
+key F1
+shot cat-fcns

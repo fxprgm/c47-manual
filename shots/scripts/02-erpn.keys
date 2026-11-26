@@ -1,0 +1,6 @@
+# 2: ENTER does not copy X (eRPN)
+key 3 ENTER 4 +
+key 4 ENTER
+shot erpn-enter
+key ×
+shot erpn-28

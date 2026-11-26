@@ -1,0 +1,8 @@
+# The User's Guide: its title page and its chapters, in order (tools/build.py).
+title = "C47 / R47 User's Guide"
+subtitle = "Getting the most from your calculator, step by step"
+edition = "Draft edition, November 2026: two sample chapters"
+chapters = [
+  "01-getting-acquainted.md",
+  "02-rpn-and-the-stack.md",
+]

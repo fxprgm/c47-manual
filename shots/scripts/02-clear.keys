@@ -1,0 +1,11 @@
+# 2: correcting and clearing
+key 1 2 3
+shot bsp-123
+key ←
+shot bsp-12
+key ENTER 5
+key ENTER
+key ←
+shot clx
+key g x⇄y F6
+shot clstk

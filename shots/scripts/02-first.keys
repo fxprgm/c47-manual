@@ -1,0 +1,9 @@
+# 2: the first calculation, 3 + 4
+key 3
+shot rpn-3
+key ENTER
+shot rpn-3-enter
+key 4
+shot rpn-4
+key +
+shot rpn-7

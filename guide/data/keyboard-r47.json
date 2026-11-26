@@ -1,0 +1,284 @@
+{
+ "layout": "R47f_g",
+ "source": "RefDB47 keyboard.utf8.tsv (C47 repository, GPL-3.0)",
+ "rows": [
+  [
+   {
+    "row": 2,
+    "col": 1,
+    "key": "x²",
+    "f": "ⅈ",
+    "g": "→R"
+   },
+   {
+    "row": 2,
+    "col": 2,
+    "key": "√Ϳ",
+    "f": "ⅈ⊚",
+    "g": "→P"
+   },
+   {
+    "row": 2,
+    "col": 3,
+    "key": "1/x",
+    "f": "x!",
+    "g": ".ms"
+   },
+   {
+    "row": 2,
+    "col": 4,
+    "key": "yˣ",
+    "f": "∜Ȳ",
+    "g": ".d"
+   },
+   {
+    "row": 2,
+    "col": 5,
+    "key": "LOG",
+    "f": "10ˣ",
+    "g": "→I"
+   },
+   {
+    "row": 2,
+    "col": 6,
+    "key": "LN",
+    "f": "ⅇˣ",
+    "g": "#"
+   }
+  ],
+  [
+   {
+    "row": 3,
+    "col": 1,
+    "key": "STO",
+    "f": "|x|",
+    "g": "∡"
+   },
+   {
+    "row": 3,
+    "col": 2,
+    "key": "RCL",
+    "f": "%",
+    "g": "Δ%"
+   },
+   {
+    "row": 3,
+    "col": 3,
+    "key": "R↓",
+    "f": "π",
+    "g": "R↑"
+   },
+   {
+    "row": 3,
+    "col": 4,
+    "key": "DRG",
+    "f": "USER",
+    "g": "ASN"
+   },
+   {
+    "row": 3,
+    "col": 5,
+    "key": "f",
+    "f": "",
+    "g": "HOME"
+   },
+   {
+    "row": 3,
+    "col": 6,
+    "key": "g",
+    "f": "",
+    "g": "CUST"
+   }
+  ],
+  [
+   {
+    "row": 4,
+    "col": 1,
+    "key": "ENTER",
+    "f": "COMPLEX",
+    "g": "CPX",
+    "wide": true
+   },
+   {
+    "row": 4,
+    "col": 2,
+    "key": "x⇄y",
+    "f": "LASTx",
+    "g": "STK",
+    "wide": false
+   },
+   {
+    "row": 4,
+    "col": 3,
+    "key": "CHS",
+    "f": "DISP",
+    "g": "TRG",
+    "wide": false
+   },
+   {
+    "row": 4,
+    "col": 4,
+    "key": "EEX",
+    "f": "PFX",
+    "g": "EXP",
+    "wide": false
+   },
+   {
+    "row": 4,
+    "col": 5,
+    "key": "←",
+    "f": "⎌",
+    "g": "CLR",
+    "wide": false
+   }
+  ],
+  [
+   {
+    "row": 5,
+    "col": 1,
+    "key": "XEQ",
+    "f": "α",
+    "g": "GTO"
+   },
+   {
+    "row": 5,
+    "col": 2,
+    "key": "7",
+    "f": "SIN",
+    "g": "ASIN"
+   },
+   {
+    "row": 5,
+    "col": 3,
+    "key": "8",
+    "f": "COS",
+    "g": "ACOS"
+   },
+   {
+    "row": 5,
+    "col": 4,
+    "key": "9",
+    "f": "TAN",
+    "g": "ATAN"
+   },
+   {
+    "row": 5,
+    "col": 5,
+    "key": "÷",
+    "f": "STAT",
+    "g": "PLOT"
+   }
+  ],
+  [
+   {
+    "row": 6,
+    "col": 1,
+    "key": "↑",
+    "f": "⇌⭡",
+    "g": "REGS"
+   },
+   {
+    "row": 6,
+    "col": 2,
+    "key": "4",
+    "f": "BASE",
+    "g": "BITS"
+   },
+   {
+    "row": 6,
+    "col": 3,
+    "key": "5",
+    "f": "INTS",
+    "g": "REAL"
+   },
+   {
+    "row": 6,
+    "col": 4,
+    "key": "6",
+    "f": "MATX",
+    "g": "X.FN"
+   },
+   {
+    "row": 6,
+    "col": 5,
+    "key": "×",
+    "f": "EQN",
+    "g": "ADV"
+   }
+  ],
+  [
+   {
+    "row": 7,
+    "col": 1,
+    "key": "↓",
+    "f": "⇌⭣",
+    "g": "FLGS"
+   },
+   {
+    "row": 7,
+    "col": 2,
+    "key": "1",
+    "f": "PREF",
+    "g": "KEYS"
+   },
+   {
+    "row": 7,
+    "col": 3,
+    "key": "2",
+    "f": "CONV",
+    "g": "CLK"
+   },
+   {
+    "row": 7,
+    "col": 4,
+    "key": "3",
+    "f": "FLAG",
+    "g": "α.FN"
+   },
+   {
+    "row": 7,
+    "col": 5,
+    "key": "-",
+    "f": "PROB",
+    "g": "FIN"
+   }
+  ],
+  [
+   {
+    "row": 8,
+    "col": 1,
+    "key": "EXIT",
+    "f": "OFF",
+    "g": "INFO"
+   },
+   {
+    "row": 8,
+    "col": 2,
+    "key": "0",
+    "f": "VIEW",
+    "g": "I/O"
+   },
+   {
+    "row": 8,
+    "col": 3,
+    "key": ".",
+    "f": "SHOW",
+    "g": "a b/c"
+   },
+   {
+    "row": 8,
+    "col": 4,
+    "key": "R/S",
+    "f": "PRGM",
+    "g": "P.FN"
+   },
+   {
+    "row": 8,
+    "col": 5,
+    "key": "+",
+    "f": "CAT",
+    "g": "CNST"
+   }
+  ]
+ ]
+}

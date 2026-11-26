@@ -1,0 +1,9 @@
+# 2: moving things around the stack
+key 1 ENTER 2 ENTER 3 ENTER 4 ENTER
+shot stack-1234
+key x⇄y
+shot stack-swap
+key R↓
+shot stack-rdn
+key g R↓
+shot stack-rup

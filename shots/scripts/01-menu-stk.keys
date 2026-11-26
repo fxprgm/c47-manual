@@ -1,0 +1,5 @@
+# 1: a softkey menu: g x⇄y opens STK; f picks its middle row
+key g x⇄y
+shot menu-stk
+key f
+shot menu-stk-f

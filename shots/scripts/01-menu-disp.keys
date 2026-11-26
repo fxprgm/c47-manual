@@ -1,0 +1,7 @@
+# 1: a menu of several pages: f CHS opens DISP, ↓ turns the page
+key f CHS
+shot menu-disp
+key ↓
+shot menu-disp-2
+key ↓
+shot menu-disp-3

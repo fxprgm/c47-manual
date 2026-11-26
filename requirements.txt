@@ -1,0 +1,5 @@
+# Everything the builds need besides Python and git: pip install -r requirements.txt
+typst==0.15.2            # Typst compiler (PDF), fonts included
+pypdf>=5,<8              # merging and bookmarks (bundle/)
+pypandoc_binary==1.17    # Pandoc 3.9 (HTML, EPUB, DOCX)
+pillow>=10               # screenshots: PBM -> PNG
