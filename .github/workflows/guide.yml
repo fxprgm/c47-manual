@@ -1,8 +1,8 @@
 # Builds the User's Guide in every format (tools/build.py) and publishes it on the release
 # "guide", whose download links never change:
 #   https://github.com/fxprgm/c47-manual/releases/download/guide/C47-R47-Users-Guide.pdf
-# On every push to main that touches the guide, and when run by hand. Pull requests and other
-# branches get the files as a workflow artifact only.
+# On every push that touches the guide, and when run by hand; published from the default branch
+# only. Pull requests and other branches get the files as a workflow artifact.
 name: guide
 
 on:
@@ -48,7 +48,7 @@ jobs:
             dist/*.zip
 
       - name: Publish on the release "guide"
-        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        if: github.ref_name == github.event.repository.default_branch && github.event_name != 'pull_request'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |

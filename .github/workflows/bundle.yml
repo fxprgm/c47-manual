@@ -2,8 +2,9 @@
 # into whole PDFs with bookmarks (bundle/bundle.py) and publishes them on the release "bundle", whose
 # download links never change:
 #   https://github.com/fxprgm/c47-manual/releases/download/bundle/C47-R47-Manual-and-Notes.pdf
-# Weekly, and when run by hand (Actions, bundle, Run workflow); it uploads only when an input changed
-# (the manual's package version, a note, or the bundle's own code), unless "force" is ticked.
+# Weekly, when bundle/ changes, and when run by hand (Actions, bundle, Run workflow); it publishes
+# from the default branch only, and only when an input changed (the manual's package version, a
+# note, or the bundle's own code), unless "force" is ticked.
 name: bundle
 
 on:
@@ -16,7 +17,6 @@ on:
         type: boolean
         default: false
   push:
-    branches: [main]
     paths: ["bundle/**", "requirements.txt", ".github/workflows/bundle.yml"]
 
 permissions:
@@ -58,7 +58,7 @@ jobs:
           fi
 
       - name: Publish
-        if: steps.check.outputs.publish == 'true'
+        if: steps.check.outputs.publish == 'true' && (github.event_name == 'schedule' || github.ref_name == github.event.repository.default_branch)
         env:
           GH_TOKEN: ${{ github.token }}
         run: |

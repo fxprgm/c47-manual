@@ -6,9 +6,8 @@ is done or found.
 ## Waiting on the user
 
 - **A `main` branch.** The repository was empty, so the first branch pushed
-  (`claude/hopeful-lovelace-qhl315`) is its default. The workflows publish from `main` only
-  (and the weekly bundle runs only on the default branch): create `main` from it (or rename
-  it) and make `main` the default.
+  (`claude/hopeful-lovelace-qhl315`) is its default. The workflows publish from the default
+  branch, whatever its name: create `main` from it (or rename it) and make `main` the default.
 - **Review the sample chapters** (`guide/01`, `guide/02`; the PDF from the `guide` workflow's
   artifact or `python3 tools/build.py pdf`): the look (keycaps, steps with screens, chapter-page
   numbers), the tone, the depth. Decide before more chapters are written.
