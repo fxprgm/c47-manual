@@ -2,4 +2,4 @@
 # C47, then `python3 shots/engine.py && python3 shots/shoot.py` and review the screens that changed.
 c47=914fccf3bb2d8e025f8923e292fca2179e942089
 # The PC build that runs it headless (fxprgm/c47-cg: its DMCP layer and src/plat_host.c).
-c47cg=d7913e75b9963839a810cffbba45c08e6367fe55
+c47cg=d043587330128504f1ed86095d75420f94aa31b4

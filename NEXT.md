@@ -12,7 +12,7 @@ is done or found.
   artifact or `python3 tools/build.py pdf`): the look (keycaps, steps with screens, chapter-page
   numbers), the tone, the depth. Decide before more chapters are written.
 - **fxprgm/c47-cg**: merge its branch `claude/hopeful-lovelace-qhl315` (the PC build's
-  `lcd FILE` command, which the engine uses). `C47_VERSION` pins c47-cg by that commit until then.
+  `lcd FILE` command, which the engine uses). `C47_VERSION` pins c47-cg by its newest commit there (d043587: the `lcd` command, and xlsxio built with CMake 4) until then.
 - **Tell the C47 team** (forum, or the documentation people on GitLab) about the guide and the
   bundles before the guide grows, so it reads as a companion to their Owner's Manual.
 
